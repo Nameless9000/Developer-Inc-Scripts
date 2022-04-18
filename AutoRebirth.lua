@@ -1,0 +1,11 @@
+while getgenv().autof and task.wait() do
+    local c = game:GetService("Players").LocalPlayer.leaderstats.Cash
+    spawn(function()
+        if c.Value <= 0 then
+            game.ReplicatedStorage.Remotes.investmentFunction:InvokeServer("Startups", c.Value)           
+            game:GetService("ReplicatedStorage").Remotes.cashEventSecured:FireServer(149)
+        end
+        game:GetService("ReplicatedStorage").Remotes.investmentFunction:InvokeServer("Startups", -(c.Value/100))
+        game:GetService("ReplicatedStorage").Remotes.rebirthEvent:FireServer()
+    end)
+end
