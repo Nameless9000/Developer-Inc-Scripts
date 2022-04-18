@@ -1,3 +1,5 @@
+getgenv().rebirth = getgenv().rebirth or true
+
 while getgenv().autof and task.wait() do
     local c = game:GetService("Players").LocalPlayer.leaderstats.Cash
     spawn(function()
@@ -6,6 +8,6 @@ while getgenv().autof and task.wait() do
             game:GetService("ReplicatedStorage").Remotes.cashEventSecured:FireServer(149)
         end
         game:GetService("ReplicatedStorage").Remotes.investmentFunction:InvokeServer("Startups", -(c.Value/100))
-        game:GetService("ReplicatedStorage").Remotes.rebirthEvent:FireServer()
+        if getgenv().rebirth then game:GetService("ReplicatedStorage").Remotes.rebirthEvent:FireServer() end
     end)
 end
